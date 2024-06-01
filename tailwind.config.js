@@ -5,7 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'black-gold': '#1d1d1d',
+        'gold': '#FFD700',
+      },
+      backgroundImage: {
+        'black-cardboard':  "url('./public/asset/black-bg.jpg')",
+      }
+    },
   },
   plugins: [],
 }
