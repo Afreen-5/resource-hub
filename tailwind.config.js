@@ -11,7 +11,7 @@ export default {
         'gold': '#FFD700',
       },
       backgroundImage: {
-        'black-cardboard':  "url('./public/asset/black-bg.jpg')",
+        'black-cardboard':  "url('./asset/black-bg.jpg')",
       }
     },
   },

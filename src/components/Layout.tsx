@@ -8,12 +8,12 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
-  const noNavbarRoutes = ['/login', '/']; // Add routes where you don't want to show the Navbar
+  const noNavbarRoutes = ['/login', '/']; 
 
   return (
-    <div className="flex min-h-screen bg-black-cardboard bg-cover bg-center">
+    <div className="flex min-h-screen">
       {!noNavbarRoutes.includes(location.pathname) && <Navbar />}
-      <main className="flex-1 bg-black-gold bg-opacity-75 text-white p-8">
+      <main className="flex-1 bg-black-gold bg-opacity-10 text-white p-8">
         {children}
       </main>
     </div>

@@ -52,22 +52,22 @@ const Todos: React.FC = () => {
 
   return (
     <div className="p-8">
-      <div className="flex justify-between mb-8">
-        <div onClick={handleCompletedClick} className="cursor-pointer bg-green-700 p-4 rounded-lg text-center">
+      <div className="flex justify-around mb-8">
+        <div onClick={handleCompletedClick} className="cursor-pointer bg-none p-4 rounded-lg text-center">
           <p className="text-xl font-semibold">Completed Todos</p>
-          <p className="text-3xl">{completedTodos}</p>
+          <p className="text-3xl text-yellow-500">{completedTodos}</p>
         </div>
-        <div onClick={handlePendingClick} className="cursor-pointer bg-red-700 p-4 rounded-lg text-center">
+        <div onClick={handlePendingClick} className="cursor-pointer bg-none p-4 rounded-lg text-center">
           <p className="text-xl font-semibold">Pending Todos</p>
-          <p className="text-3xl">{pendingTodos}</p>
+          <p className="text-3xl text-yellow-500">{pendingTodos}</p>
         </div>
       </div>
 
       {(showCompleted || showPending) && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-40" onClick={handleCloseClick}>
-          <div className="bg-white p-6 rounded shadow-lg relative" onClick={e => e.stopPropagation()}>
+        <div className="fixed inset-0 bg-black bg-opacity-10 flex justify-center items-center z-40" onClick={handleCloseClick}>
+          <div className="bg-gradient-to-r from-stone-700 to-stone-500 p-6 rounded shadow-lg relative" onClick={e => e.stopPropagation()}>
             <h2 className="text-xl font-bold mb-4">{showCompleted ? 'Completed Todos' : 'Pending Todos'}</h2>
-            <table className="min-w-full bg-white">
+            <table className="min-w-full bg-none">
               <thead>
                 <tr>
                   <th className="py-2 px-4 border-b">Title</th>

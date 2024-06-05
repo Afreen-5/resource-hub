@@ -1,7 +1,6 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Dashboard from "./Dashboard";
 
 const Login: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -10,6 +9,13 @@ const Login: React.FC = () => {
     });
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const user = localStorage.getItem('user')
+        if(user) {
+            navigate('/home', {replace: true});
+        }
+    })
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -38,35 +44,34 @@ const Login: React.FC = () => {
 
     return (
         <>
-            <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-500">
-                <div className="bg-purple-900 p-8 rounded-lg shadow-lg text-white">
-                    <h2 className="text-2xl mb-6">Welcome to the website</h2>
+            <div className="flex items-center justify-center min-h-screen overflow-y:hidden">
+                <div className="p-3 rounded-lg shadow-lg text-white">
+                    <h1 className="text-2xl mb-3 font-extrabold bg-gradient-to-r from-yellow-500 to-red-600 bg-clip-text text-transparent bg-clip-text text-transparent py-6 mb-10">Welcome to the Resource Hub</h1>
                     <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
                         <div>
                             <label htmlFor="username" className="block mb-2">Username</label>
                             <input
                                 type="text"
-                                id="username"
                                 name="username"
                                 value={formData.username}
                                 onChange={handleChange}
-                                className="w-full px-4 py-2 rounded bg-purple-800 border border-purple-700"
+                                className="w-full px-4 py-2 rounded border text-black"
                             />
                         </div>
                         <div className="flex justify-between items-center">
                             <label className="inline-flex items-center">
-                                <input type="checkbox" className="form-checkbox h-4 w-4 text-purple-600" />
+                                <input type="checkbox" className="form-checkbox h-4 w-4" />
                                 <span className="ml-2">Remember me</span>
                             </label>
-                            <a href="#" className="text-sm text-purple-400 hover:underline">Forgot password?</a>
+                            <a href="#" className="text-sm text-yellow-500 hover:underline">Forgot password?</a>
                         </div>
-                        <button type="submit" className="w-full py-2 bg-blue-600 rounded hover:bg-blue-700">
+                        <button type="submit" className="w-full py-2 bg-yellow-500 rounded hover:bg-yellow-800">
                             Login
                         </button>
                         <p className="text-center text-sm mt-4">{message}</p>
                     </form>
                     <p className="text-center text-sm mt-4">
-                        To create a new account, <span className="text-purple-400 hover:underline cursor-pointer" onClick={() => navigate('/')}>Click here</span>
+                        To create a new account, <span className="text-yellow-500 hover:underline cursor-pointer" onClick={() => navigate('/')}>Click here</span>
                     </p>
                 </div>
             </div>

@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="w-64 bg-black text-yellow-400 p-4 flex flex-col space-y-4">
-      <h1 className="text-3xl font-bold mb-8">Resource Hub</h1>
-      <Link to="/home" className="hover:text-yellow-500">Home</Link>
-      <Link to="/todos" className="hover:text-yellow-500">Todos</Link>
-      <Link to="/gallery" className="hover:text-yellow-500">Gallery</Link>
-      <Link to="/posts" className="hover:text-yellow-500">Posts</Link>
-      <Link to="/albums" className="hover:text-yellow-500">Albums</Link>
+    <nav className="w-64 bg-gradient-to-t from-zinc-800 to-zinc-900 text-yellow-400 p-4 flex flex-col space-y-4">
+      <h1 className="text-3xl font-bold mb-8 bg-gradient-to-r from-yellow-500 to-red-600 bg-clip-text text-transparent">Resource Hub</h1>
+      <Link to="/home" className="font-bold hover:text-yellow-700">Home</Link>
+      <Link to="/todos" className="font-bold hover:text-yellow-700">Todos</Link>
+      <Link to="/gallery" className="font-bold hover:text-yellow-700">Gallery</Link>
+      <Link to="/posts" className="font-bold hover:text-yellow-700">Posts</Link>
+      <Link to="/albums" className="font-bold hover:text-yellow-700">Albums</Link>
     </nav>
   );
 };

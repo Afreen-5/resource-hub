@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SignUp: React.FC = () => {
@@ -12,6 +12,13 @@ const SignUp: React.FC = () => {
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const user = localStorage.getItem('user')
+        if(user) {
+            navigate('/home', {replace: true})
+        }
+    })
+
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
     };
@@ -19,7 +26,6 @@ const SignUp: React.FC = () => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
-            // Make a POST request to your backend to handle signup
             const response = await axios.post('YOUR_BACKEND_ENDPOINT/signup', formData);
             setMessage("Signup Successful");
             navigate('/dashboard');
@@ -32,7 +38,8 @@ const SignUp: React.FC = () => {
     return (
         <div className="flex items-center justify-center min-h-screen">
             <div className="p-8 rounded-lg shadow-lg text-white">
-                <h2 className="text-2xl mb-6">Sign Up</h2>
+            {/* <h1 className="text-2xl mb-3 font-extrabold bg-gradient-to-r from-yellow-500 to-red-600 bg-clip-text text-transparent bg-clip-text text-transparent py-6 mb-10">Welcome to the Resource Hub</h1> */}
+                <h2 className="text-2xl mb-6 text-center font-bold text-yellow-500 mb-10">Sign Up</h2>
                 <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
                     <div className="flex flex-col md:flex-row md:space-x-4">
                         <div className="flex-1">
@@ -82,7 +89,7 @@ const SignUp: React.FC = () => {
                             />
                         </div>
                     </div>
-                    <button type="submit" className="w-full py-2 bg-yellow-500">
+                    <button type="submit" className="w-full py-2 bg-yellow-500 hover:bg-yellow-800">
                         Sign Up
                     </button>
                     <p className="text-center text-sm mt-4">{message}</p>
